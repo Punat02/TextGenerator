@@ -1,0 +1,2 @@
+avarge time 165s per Epoche
+dropout 0
