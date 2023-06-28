@@ -1,0 +1,3 @@
+400s per Epoche
+Adagrad lr=1
+lr=0.001 gibt keine verbesserungen
