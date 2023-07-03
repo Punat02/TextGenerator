@@ -1,0 +1,7 @@
+Adam lr=1
+# Create Model
+model = Sequential()
+model.add(LSTM(128, input_shape=(context_words, len(unique_tokens)), return_sequences=True, recurrent_dropout=dropout,  dropout=dropout,activation="sigmoid"))
+model.add(LSTM(128, recurrent_dropout=dropout, dropout=dropout,activation="sigmoid"))
+model.add(Dense(len(unique_tokens), activation="softmax"))
+405s
