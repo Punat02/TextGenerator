@@ -1,0 +1,11 @@
+dropout=.5
+keras.backend.clear_session()
+# Create Model
+model = Sequential()
+model.add(LSTM(256, input_shape=(context_words, len(unique_tokens)), return_sequences=True, recurrent_dropout=dropout,  dropout=dropout, activation="softsign"))
+model.add(LSTM(256, recurrent_dropout=dropout, dropout=dropout, activation="softsign"))
+model.add(Dense(len(unique_tokens), activation="softmax"))
+
+# Train Model
+model.compile(loss='categorical_crossentropy', optimizer=Adagrad(learning_rate=1), metrics=['accuracy', 'categorical_accuracy', top_5_categorical_accuracy, top_10_categorical_accuracy])
+history = model.fit(x_train, y_train, validation_data=(x_val, y_val), batch_size=128, epochs=50, shuffle=True).history
