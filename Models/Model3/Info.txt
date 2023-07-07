@@ -1,0 +1,2 @@
+430s per Epoche
+RMSpro lr=0.001
