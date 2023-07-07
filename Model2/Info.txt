@@ -1,2 +1,0 @@
-412s per Epoche
-Adam lr=0.001

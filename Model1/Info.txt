@@ -1,2 +1,0 @@
-avrage training time 445s per Epoche
-Dropout 0.5
