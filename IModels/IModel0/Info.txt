@@ -1,0 +1,13 @@
+dropout=.5
+keras.backend.clear_session()
+# Create Model
+model = Sequential()
+model.add(Embedding(input_dim=total_unique_words, output_dim=100, input_length=context_words, weights=[embeddings_matrix], trainable=False))
+model.add(LSTM(128, return_sequences=True, recurrent_dropout=dropout,  dropout=dropout, activation="softsign"))
+model.add(LSTM(128, recurrent_dropout=dropout, dropout=dropout, activation="softsign"))
+model.add(Dense(total_unique_words, activation="softmax"))
+# Train Model
+model.compile(loss='sparse_categorical_crossentropy', optimizer=Adagrad(learning_rate=1), metrics=['accuracy', SparseTopKCategoricalAccuracy(k=5)])
+history = model.fit(x_train, y_train, validation_data=(x_val, y_val), batch_size=128, epochs=50, shuffle=True).history
+
+46s per Epoche
